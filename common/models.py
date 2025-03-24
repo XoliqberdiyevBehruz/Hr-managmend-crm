@@ -44,3 +44,16 @@ class JobApplication(BaseModel):
 
     def __str__(self):
         return self.name
+
+
+class Payment(BaseModel):
+    STATUS = (
+        ('paid', 'paid'),
+        ('unpaid', 'unpaid'),
+    )
+    status = models.CharField(max_length=250, choices=STATUS)
+    employee = models.ForeignKey('user.User', on_delete=models.DO_NOTHING, related_name='payments')
+    salary = models.PositiveBigIntegerField(default=0)
+
+    def __str__(self):
+        return f'{self.status} {self.employee} {self.salary}'

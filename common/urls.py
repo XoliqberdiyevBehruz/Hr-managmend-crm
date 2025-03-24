@@ -13,4 +13,10 @@ urlpatterns = [
 
     path('job-application/<uuid:id>/change/', views.JobApplicationUpdate.as_view()),
     path('job-application/list/', views.JobApplicationListApiView.as_view()),
+
+    path('payment/list/', views.PaymentListApiView.as_view()),
+    path('payment/change/<uuid:id>/', views.PaymentChangeApiView.as_view()),
+    path('payment/statistics/', views.PaymentStatisticsApiView.as_view()),
+
+    path('department/statistics/', views.DepartmentStatisticsApiView.as_view()),
 ]

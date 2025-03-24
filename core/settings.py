@@ -19,6 +19,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'django_filters',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -27,7 +28,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'drf_yasg',
     'rest_framework',
-    'django_filters',
 
     'user',
     'common',
@@ -124,19 +124,23 @@ AUTH_USER_MODEL = 'user.User'
 
 
 SWAGGER_SETTINGS = {
-   'SECURITY_DEFINITIONS': {
-      'Bearer': {
+    'SECURITY_DEFINITIONS': {
+        'api_key': {
             'type': 'apiKey',
-            'name': 'Authorization',
-            'in': 'header'
-      }
-   }
+            'name': 'authorization',
+            'in': 'header',
+        }
+    },
+    'USE_SESSION_AUTH': False,
 }
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ]
 }
 
 

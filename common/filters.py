@@ -1,8 +1,14 @@
-from django_filters.rest_framework import FilterSet
+import django_filters 
 
 from common import models 
 
-class FilterJobApplication(FilterSet):
+class FilterJobApplication(django_filters.FilterSet):
     class Meta:
         model = models.JobApplication
         fields = ['status']
+    
+
+class PaymentFilter(django_filters.FilterSet):
+    class Meta:
+        model = models.Payment
+        fields = ['status', 'employee__first_name', 'employee__last_name']
