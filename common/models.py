@@ -52,7 +52,7 @@ class Payment(BaseModel):
         ('unpaid', 'unpaid'),
     )
     status = models.CharField(max_length=250, choices=STATUS)
-    employee = models.ForeignKey('user.User', on_delete=models.DO_NOTHING, related_name='payments')
+    employee = models.ForeignKey('user.User', on_delete=models.CASCADE, related_name='payments')
     salary = models.PositiveBigIntegerField(default=0)
 
     def __str__(self):

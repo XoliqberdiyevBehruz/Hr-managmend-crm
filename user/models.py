@@ -62,7 +62,7 @@ class User(AbstractUser, BaseModel):
     last_name = models.CharField(max_length=250)
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=15, unique=True)
-    department = models.ForeignKey('Department', on_delete=models.SET_NULL, related_name='users', null=True, blank=True)
+    department = models.ForeignKey(Department, on_delete=models.SET_NULL, related_name='users', null=True, blank=True)
     address = models.TextField()
     job_title = models.CharField(max_length=250)
     joined_date = models.DateField(null=True)
